@@ -4,11 +4,15 @@ runtime: python27
 api_version: 1
 threadsafe: yes
 
+libraries:
+- name: django
+  version: latest
+  
+
 handlers:
-- url: /
-  script: main.py
-- url: /api
-  script: api.py
+- url: /(.*)
+  script: main.application
+
   
 
 

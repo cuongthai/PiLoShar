@@ -22,17 +22,9 @@ import webapp2
 from google.appengine.ext import blobstore
 
 
-class UploadImageHandler(webapp2.RequestHandler):
+class FileuploadHandler(webapp2.RequestHandler):
     def get(self):
 		self.response.out.write(blobstore.create_upload_url('/upload'))
-
-class ViewImageHandler(webapp2.RequestHandler):
-	def get(self):
-		path = os.path.join(os.path.dirname(__file__), 'templates', 'all_images.html')
-		self.response.out.write('template.render(path, template_values)')
-
-
-application = webapp2.WSGIApplication([('/upload_image/', UploadImageHandler),('/images/',ViewImageHandler)], debug=True)
 
 
 
