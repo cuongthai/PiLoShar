@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1;">
+		<title>Context.IO AppEngine Demo</title>
+		<link rel="stylesheet" type="text/css" href="/css/app.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+		<script type="text/javascript" src="/js/dateToLocaleFormat.js"></script>
+		<script type="text/javascript" src="/js/app.js"></script>
+	</head>
+	<body>
+		<div id="header" class="clearfix"><span>Context.IO demo</span><a href="{{ url }}">{{ url_linktext }}</a></div>
+		<div id="sidebar">
+			<div id="searchBox">
+				<span class="icon"></span>
+				<input type="search" name="" placeholder="Search for contacts ..." />
+			</div>
+			<div id="searchResultsCtnr"></div>
+		</div>
+		<div id="contentDisplay">
+			<div class="noSelection">
+				<p>Pick a contact from the search results on the left to see recent emails and attachments.</p>
+			</div>
+			<div class="hasSelection">
+				<ul id="contentNav">
+					<li class="selected" rel="messages">messages</li>
+					<li rel="attachments">attachments</li>
+				</ul>
+				<div id="messageListCtnr" class="contentListCtnr"></div>
+				<div id="attachmentListCtnr" class="contentListCtnr" style="display: none">
+					<table>
+						<thead>
+							<tr>
+								<th>file name</th>
+								<th>from</th>
+								<th>email subject</th>
+								<th>actions</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div style="display: none;">
+			<div id="tmpl-messageElm">
+				<div>
+					<div class="title">
+						<span class="subject"></span>
+						<span class="date"></span>
+					</div>
+					<div class="people">
+						<div class="from">
+							<span class="label">from:</span>
+							<span class="address"></span>
+						</div>
+						<div class="to">
+							<span class="label">to:</span>
+							<span class="address"></span>
+						</div>
+						<div class="cc">
+							<span class="label">cc:</span>
+							<span class="address"></span>
+						</div>
+					</div>
+					<div class="actions">
+						<a href="javascript:void(null);" rel="body">open message</a>
+						<a href="javascript:void(null);" rel="thread">show full thread</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
