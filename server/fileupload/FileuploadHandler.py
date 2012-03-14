@@ -22,7 +22,7 @@ import webapp2
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 from fileupload.models import ImageBlob
-
+from google.appengine.api import memcache
 class FileuploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 	def get(self):
 		
@@ -33,6 +33,8 @@ class FileuploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 		longitude = self.request.POST.get('longitude')
 		image = ImageBlob(image_blob_key=upload.key(),latitude=latitude,longitude=longitude)
 		image.put()
-		self.response.out.write(image.key)
+		
+		memcache.delete("images") #Reset memcache
+		self.response.out.write(image.key())
 
 

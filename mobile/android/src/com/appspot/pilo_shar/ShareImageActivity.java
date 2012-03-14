@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.StringBody;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -32,6 +33,8 @@ import com.appspot.pilo_shar.utils.gps.LocationResult;
 
 public class ShareImageActivity extends Activity {
 	private Bitmap bitmap;
+	private double latitude;
+	private double longitude;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -105,9 +108,12 @@ public class ShareImageActivity extends Activity {
 		public void gotLocation(Location location) {
 			// Assign location to activity
 			TextView locationTv = (TextView) findViewById(R.id.tv_location_result);
-			if (location != null)
+			if (location != null) {
 				locationTv.setText("Longitude=" + location.getLongitude()
 						+ ", Latitude=" + location.getLatitude());
+				longitude = location.getLongitude();
+				latitude = location.getLatitude();
+			}
 		}
 	};
 
@@ -129,6 +135,7 @@ public class ShareImageActivity extends Activity {
 		protected void onPreExecute() {
 			pd = new ProgressDialog(ShareImageActivity.this);
 			pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+			
 			pd.setMessage("Uploading Picture...");
 			pd.setCancelable(false);
 			pd.show();
@@ -157,17 +164,23 @@ public class ShareImageActivity extends Activity {
 
 			entity.addPart("file",
 					new ByteArrayBody(data, "image/jpeg", "file"));
+			try {
+				entity.addPart("longitude", new StringBody(longitude + ""));
+				entity.addPart("latitude", new StringBody(latitude + ""));
+			} catch (Exception e) {
+			}
 			totalSize = entity.getContentLength();
 
 			String blobStoreId = new AnonymousCommunicator().doPost(upload_url,
 					entity);
-			Log.v("TagName",blobStoreId);
+			Log.v("TagName", blobStoreId);
 			return null;
 		}
 
 		@Override
 		protected void onProgressUpdate(Integer... progress) {
 			pd.setProgress((int) (progress[0]));
+			
 		}
 
 		@Override
