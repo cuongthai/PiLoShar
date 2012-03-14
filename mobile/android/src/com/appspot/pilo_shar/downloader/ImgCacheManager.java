@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.util.Log;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -47,6 +48,8 @@ public class ImgCacheManager {
 		if (iv == null) {
 			return;
 		}
+		
+		Log.v("TagName","Filling Image");
 
 		Bitmap bitmap = getBitmapFromCache(url);
 		LogUtils logUtils = new LogUtils();
@@ -61,7 +64,8 @@ public class ImgCacheManager {
 		// bitmap exists, cancel any downloaders
 		else {
 			cancelPotentialDownload(url, iv);
-			iv.setBackgroundColor(Color.WHITE);
+			//iv.setBackgroundColor(Color.WHITE);
+			
 			iv.setImageBitmap(bitmap);
 			logUtils.print(this, "*--***Image Call*** Use Image in cache" + url);
 		}

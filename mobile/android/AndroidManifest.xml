@@ -5,6 +5,9 @@
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="8" />
+    
+    
+    
     <!-- Getting permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -13,6 +16,9 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
+        <!-- Remember to add this if using google map -->
+        <uses-library android:name="com.google.android.maps" />
+        
         <activity
             android:name=".PiLoSharActivity"
             android:label="@string/app_name"
@@ -29,9 +35,6 @@
             android:name="ImageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="MapActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ShareImageActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -42,6 +45,7 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
+        <activity android:name="ActivityMapImage" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

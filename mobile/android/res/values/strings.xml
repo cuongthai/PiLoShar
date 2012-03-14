@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<string name="map_api">0riC7c5hsW3O_hmr5-owk66G9dUzlZdYQLQS_fg</string>
     <string name="hello">Hello, PiLoSharActivity!</string>
     <string name="app_name">PiLoShar</string>
     <string name="btn_showmap">Images on Map</string>

@@ -28,7 +28,7 @@ public class PiLoSharActivity extends Activity {
 			public void onClick(View v) {
 				// Create an intent(a plan)
 				Intent showMapIntent = new Intent(getApplicationContext(),
-						MapActivity.class);
+						ActivityMapImage.class);
 				// Start it
 				startActivity(showMapIntent);
 			}
