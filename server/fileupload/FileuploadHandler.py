@@ -33,6 +33,6 @@ class FileuploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 		longitude = self.request.POST.get('longitude')
 		image = ImageBlob(image_blob_key=upload.key(),latitude=latitude,longitude=longitude)
 		image.put()
-		self.response.out.write(image.pk)
+		self.response.out.write(image.id)
 
 
