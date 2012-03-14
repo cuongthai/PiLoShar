@@ -161,6 +161,7 @@ public class ShareImageActivity extends Activity {
 
 			String blobStoreId = new AnonymousCommunicator().doPost(upload_url,
 					entity);
+			Log.v("TagName",blobStoreId);
 			return null;
 		}
 

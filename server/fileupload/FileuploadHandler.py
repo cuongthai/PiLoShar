@@ -20,17 +20,19 @@ import urllib
 import webapp2
 
 from google.appengine.ext import blobstore
+from google.appengine.ext.webapp import blobstore_handlers
 from fileupload.models import ImageBlob
 
-class FileuploadHandler(webapp2.RequestHandler):
+class FileuploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 	def get(self):
-		self.response.out.write(blobstore.create_upload_url('/upload_image'))
+		
+		self.response.out.write(blobstore.create_upload_url('/upload_image/')) #successful url
 	def post(self):
 		upload = self.get_uploads()[0]
 		latitude = self.request.POST.get('latitude')
 		longitude = self.request.POST.get('longitude')
 		image = ImageBlob(image_blob_key=upload.key(),latitude=latitude,longitude=longitude)
-		db.put(image)
+		image.put()
 		self.response.out.write(image.pk)
 
 
