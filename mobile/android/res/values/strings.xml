@@ -5,5 +5,7 @@
     <string name="app_name">PiLoShar</string>
     <string name="btn_showmap">Images on Map</string>
     <string name="btn_show_images">Image List</string>
+    <string name="share_image_infor">This image will be uploaded to App Engine Server</string>
+    <string name="btn_share">Share</string>
 
 </resources>
