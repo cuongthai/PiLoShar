@@ -1,7 +1,8 @@
 from google.appengine.ext import db
-class Greeting(db.Model):
+from google.appengine.ext import blobstore
+class ImageBlob(db.Model):
 	"""Models an individual Guestbook entry with an author, content, and date."""
-	image_file = db.UserProperty()
+	image_blob_key =  blobstore.BlobReferenceProperty()
 	date_create = db.DateTimeProperty(auto_now_add=True)
-	latitude = db.StringProperty(multiline=True)
-	longitude = db.StringProperty(multiline=True)
+	latitude = db.StringProperty(required=False)
+	longitude = db.StringProperty(required=False)

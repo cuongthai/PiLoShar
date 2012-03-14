@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello, PiLoSharActivity!</string>
+    <string name="app_name">PiLoShar</string>
+    <string name="btn_showmap">Images on Map</string>
+    <string name="btn_show_images">Image List</string>
+
+</resources>
